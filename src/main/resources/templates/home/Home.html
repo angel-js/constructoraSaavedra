@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Saavedra Constructora</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <!-- comment -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="/static/css/styleTrabajoView.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid d-flex">
+        <a class="navbar-brand" th:href="@{/admin/cotizacion/home/}">Saavedra</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse  justify-content-end" id="collapsibleNavbar">
+            <div class="">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/trabajo/home}">Trabajos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/cotizacion/crear}">Crear Cotización</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/users/}">Administrador</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/personal/buscar}">Personal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/cotizacion/buscar}">Buscar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/logout}">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row pt-4 pb-4">
+        <div class="col-md-12 pb-4">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <b><h4 class="display-4 text-center">Saavedra Construcciones</h4></b>
+                    <h6 class="display-6 ps-5 text-center">
+                        Bienvenido a tu sesión: <span class="text-center"
+                                                      th:text="${user.name + ' ' + user.lastname }"></span>
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card p-5 me-2 ms-2  mt-4 bg-primary">
+                <a th:href="@{/admin/trabajo/list}">
+                    <div class="card-body ">
+                        <h6 class="display-6 text-center text-white">
+                            Trabajos
+                        </h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card p-5 me-2 ms-2  mt-4 bg-success">
+                <a th:href="@{/admin/cotizacion/buscar}">
+                    <div class="card-body ">
+                        <h6 class="display-6 text-center text-white">
+                            Cotizaciones
+                        </h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card p-5 me-2 ms-2  mt-4 bg-danger">
+                <a th:href="@{/admin/personal/buscar}">
+                    <div class="card-body ">
+                        <h6 class="display-6 text-center text-white">
+                            Supervisores
+                        </h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card p-5 me-2 ms-2  mt-4 bg-warning">
+                <a th:href="@{/admin/users/}">
+                    <div class="card-body ">
+                        <h6 class="display-6 text-center text-white">
+                            Usuarios
+                        </h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
