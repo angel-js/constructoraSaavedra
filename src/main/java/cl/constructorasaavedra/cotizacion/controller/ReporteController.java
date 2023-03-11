@@ -108,8 +108,8 @@ public class ReporteController {
             // llamar al id
             Trabajo trbj = trabajoService.findById(id);
             List<Item> itemsTrabajo = new ArrayList<>();
-            itemsTrabajo.add(new Item(1000000,"nombre", 0));
             itemsTrabajo = trabajoService.findByTrabajoId(trbj.getId());
+            itemsTrabajo.add(0, new Item(1,"nombre", 0)); // Agregar el objeto en la primera posición de la lista
             if (trbj != null) {
                 params.put("trabajoID", trbj.getId());
                 params.put("logoEmpresa", logoEmpresa);
