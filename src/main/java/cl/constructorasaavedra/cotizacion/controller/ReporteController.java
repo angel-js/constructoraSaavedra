@@ -167,10 +167,35 @@ public class ReporteController {
 
             // llamar al id
             Trabajo trbj = trabajoService.findById(id);
-            List<Item> itemsTrabajo = trabajoService.findByTrabajoId(trbj.getId());
+            List<Item> itemsTrabajo = new ArrayList<>();
+            itemsTrabajo = trabajoService.findByTrabajoId(trbj.getId());
+            itemsTrabajo.add(0, new Item(1,"nombre", 0)); // Agregar el objeto en la primera posición de la lista
+            // Iterar lista para sumar el campo de neto
+            Double neto = 0.0;
+            Double iva = 0.0;
+            Double total = 0.0;
+            for (Item item: itemsTrabajo) {
+                neto = neto + item.getMonto();
+                System.out.println("MONTO iterando item: " + neto);
+            }
+            System.out.println("MONTO neto despues de iterar: " + neto);
+            // Calculo
+            iva = neto * 0.19;
+            total = iva + neto;
+
+            // Redondeo
+            neto = (double) Math.round(neto);
+            iva = (double) Math.round(iva);
+            total = (double) Math.round(total);
+            System.out.println("Iva 19%: " + iva);
+            System.out.println("Total: " + total);
+
             if (trbj != null) {
                 params.put("trabajoID", trbj.getId());
                 params.put("logoEmpresa", logoEmpresa);
+                params.put("neto", neto.toString());
+                params.put("iva", iva.toString());
+                params.put("total", total.toString());
                 List<Supervisor> supervisores = supervisorService.findSupervisorsByLocalId(trbj.getDepartamento().getId());
                 Supervisor supervisor = supervisores.get(0);
                 System.out.println("supervisor: " + supervisor.toString());
